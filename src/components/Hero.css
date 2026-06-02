@@ -1,0 +1,166 @@
+/* ========== HERO POSTER ========== */
+.hero-poster {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 800px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  color: #111;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-poster__orange-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 66vw;
+  height: 55vh;
+  background-color: #fb3e1a; /* Adjusted to match the specific reddish-orange in the image */
+  z-index: 1;
+}
+
+.hero-poster__nav {
+  position: absolute;
+  top: 40px;
+  left: 4vw;
+  right: 4vw;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  z-index: 10;
+}
+
+.hero-poster__nav-left,
+.hero-poster__nav-right {
+  display: flex;
+  gap: 3vw;
+}
+
+.hero-poster__content {
+  position: absolute;
+  top: 45%;
+  left: 8vw;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+.hero-poster__small-texts {
+  display: flex;
+  gap: 50px;
+  max-width: 450px;
+  margin-bottom: 25px;
+}
+
+.hero-poster__small-col {
+  flex: 1;
+}
+
+.hero-poster__small-col--offset {
+  padding-top: 35px;
+}
+
+.hero-poster__small-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #999;
+  margin-bottom: 5px;
+  letter-spacing: 0.02em;
+}
+
+.hero-poster__small-line {
+  width: 100%;
+  height: 2px;
+  background-color: #111;
+  margin-bottom: 8px;
+}
+
+.hero-poster__small-desc {
+  font-size: 0.5rem;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  color: #111;
+}
+
+.hero-poster__text-lab {
+  font-size: clamp(8rem, 16vw, 16rem);
+  font-weight: 700;
+  line-height: 0.75;
+  letter-spacing: -0.05em;
+  margin: 0;
+  margin-left: -5px;
+  color: #111;
+}
+
+.hero-poster__text-001-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+
+.hero-poster__text-001 {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 700;
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: top left;
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  letter-spacing: -0.02em;
+  color: #111;
+}
+
+.hero-poster__rotated-right {
+  position: absolute;
+  top: 30%;
+  right: 6vw;
+  transform: rotate(90deg);
+  transform-origin: top right;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: left;
+  z-index: 10;
+  letter-spacing: 0.05em;
+  color: #111;
+}
+
+.hero-poster__person {
+  position: absolute;
+  bottom: 0;
+  right: 8vw;
+  height: 85vh;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.hero-poster__person img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  object-position: bottom;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
+}
+
+.hero-poster__arrow-btn {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 70px;
+  height: 70px;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-poster__arrow-btn:hover {
+  background-color: #333;
+}

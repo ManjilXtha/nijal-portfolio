@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import HeroCarousel from './HeroCarousel';
 import './Hero.css';
 
 export default function Hero() {
@@ -7,43 +9,53 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Entrance animations for a premium feel
-      gsap.from('.hero-poster__text-lab', {
-        y: 100,
+      // Entrance animations to match the premium Lesmana feel
+      gsap.from('.hero-nav', {
+        y: -30,
         opacity: 0,
         duration: 1.2,
-        ease: 'power4.out',
-        delay: 0.1
+        ease: 'power3.out',
       });
-      gsap.from('.hero-poster__text-001', {
-        x: -50,
+
+      gsap.from('.hero-portrait', {
+        y: 60,
+        opacity: 0,
+        scale: 1.05,
+        duration: 1.6,
+        ease: 'power4.out',
+        delay: 0.2,
+      });
+
+      gsap.from('.hero-bottom__subtitle', {
+        y: 20,
         opacity: 0,
         duration: 1,
         ease: 'power3.out',
-        delay: 0.3
+        delay: 0.4,
       });
-      gsap.from('.hero-poster__person', {
-        scale: 1.05,
+
+      gsap.from('.hero-bottom__title', {
+        y: 40,
         opacity: 0,
-        y: 50,
-        duration: 1.5,
-        ease: 'power3.out',
-        delay: 0.4
-      });
-      gsap.from('.hero-poster__orange-box', {
-        scaleX: 0,
-        transformOrigin: 'right',
         duration: 1.2,
-        ease: 'power4.inOut',
-        delay: 0
+        ease: 'power4.out',
+        delay: 0.5,
       });
-      gsap.from('.hero-poster__nav span', {
-        y: -20,
+
+      gsap.from('.hero-bottom__action', {
+        y: 20,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
+        duration: 1,
         ease: 'power3.out',
-        delay: 0.5
+        delay: 0.7,
+      });
+
+      gsap.from('.hero-bottom__right', {
+        x: 30,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power3.out',
+        delay: 0.8,
       });
     }, containerRef);
 
@@ -52,67 +64,62 @@ export default function Hero() {
 
   return (
     <section className="hero-poster" ref={containerRef}>
-      <div className="hero-poster__orange-box">
-        {/* Arrow Button */}
-        <div className="hero-poster__arrow-btn">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
+      {/* Top Navigation */}
+      <nav className="hero-nav">
+        <Link to="/" className="hero-nav__logo">
+          Nijal.
+        </Link>
+        <div className="hero-nav__info-group">
+          <div className="hero-nav__info-item">
+            <span className="hero-nav__info-label">Available for projects</span>
+            <span className="hero-nav__info-val">2 Slots Available</span>
+          </div>
+          <div className="hero-nav__info-item">
+            <span className="hero-nav__info-label">Based in</span>
+            <span className="hero-nav__info-val">Kathmandu, Nepal</span>
+          </div>
         </div>
-      </div>
-      
-      {/* Top Navigation inside poster */}
-      <nav className="hero-poster__nav">
-        <div className="hero-poster__nav-left">
-          <span>+1</span>
-          <span>PROJECTS</span>
-        </div>
-        <div className="hero-poster__nav-right">
-          <span>AW19</span>
-          <span>SHOP</span>
-          <span>NEW ARRIVALS ▼</span>
-          <span>...</span>
+        <div className="hero-nav__right">
+          <div className="hero-nav__links">
+            <Link to="/about" className="hero-nav__link">About</Link>
+            <Link to="/work" className="hero-nav__link">Works</Link>
+            <Link to="/contact" className="hero-nav__link">Contact</Link>
+          </div>
+          <Link to="/contact" className="hero-nav__btn">
+            <span>Start a project</span>
+            <div className="hero-nav__btn-arrow">→</div>
+          </Link>
         </div>
       </nav>
 
-      {/* Main Typography */}
-      <div className="hero-poster__content">
-        <div className="hero-poster__small-texts">
-          <div className="hero-poster__small-col">
-            <h4 className="hero-poster__small-title">X/LABS</h4>
-            <div className="hero-poster__small-line"></div>
-            <p className="hero-poster__small-desc">
-              FOR AUTHENTICATION OF X-LABS UNREAL SPRING/
-              <br />SUMMER COLLECTION AND PROTECTION
-              <br />KEEP UNSEEN
-            </p>
-          </div>
-          <div className="hero-poster__small-col hero-poster__small-col--offset">
-            <div className="hero-poster__small-line"></div>
-            <p className="hero-poster__small-desc">
-              FOR AUTHENTICATION OF X-LABS UNREAL SPRING/
-              <br />SUMMER COLLECTION AND PROTECTION
-              <br />KEEP UNSEEN
-            </p>
-          </div>
-        </div>
+      {/* Curved Carousel behind portrait */}
+      <HeroCarousel />
 
-        <h1 className="hero-poster__text-lab">lab.</h1>
-        <div className="hero-poster__text-001-container">
-          <div className="hero-poster__text-001">001</div>
-        </div>
+      {/* Center Portrait */}
+      <div className="hero-portrait">
+        <img src="/portrait.png" alt="Nijal Tamrakar" />
       </div>
 
-      {/* Right Side Rotated Text */}
-      <div className="hero-poster__rotated-right">
-        X-LAB<br/>
-        MATERIALS OF<br/>
-        CREATION 2019
-      </div>
-
-      {/* Center Image */}
-      <div className="hero-poster__person">
-        <img src="/portrait.png" alt="Person" />
+      {/* Bottom Area */}
+      <div className="hero-bottom">
+        <div className="hero-bottom__left">
+          <span className="hero-bottom__subtitle">HI, I'M NIJAL</span>
+          <h1 className="hero-bottom__title">
+            Creative Developer<br />& Designer
+          </h1>
+          <Link to="/contact" className="hero-bottom__action">
+            <span>Start a project</span>
+            <div className="hero-bottom__action-circle">→</div>
+          </Link>
+        </div>
+        <div className="hero-bottom__right">
+          <p className="hero-bottom__desc">
+            I help ambitious brands turn their vision into reality through premium web experiences, combining clean code with immersive interactions.
+          </p>
+          <div className="hero-bottom__signature">
+            Nijal Tamrakar
+          </div>
+        </div>
       </div>
     </section>
   );
